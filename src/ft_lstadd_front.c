@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/04 17:17:42 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/24 12:50:26 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/25 17:50:08 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int	i = 1000;
-	char *str = "My string";
-
-	printf("Test %25i\n", i);
-	printf("Test %25.10i\n", i);
-	printf("Test %25.7i\n", i);
-	printf("------------------------MY FT_PRINTF---------------------------\n");
-	ft_printf("Hello world!\n");
-	ft_printf("Hello %s!\n", str);
-	return (0);
+	if (new)
+		new->next = *lst;
+	(*lst) = new;
 }

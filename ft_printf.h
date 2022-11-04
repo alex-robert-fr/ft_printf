@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:20 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/04 17:25:33 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
-{
-	int	out;
+#include "./src/libft.h"
+# include <stdarg.h>
 
-	if (nbr > 16)
-		ft_puthexa(nbr / 16, is_maj_or_min);
-	out = nbr % 16;
-	if (out < 10)
-		ft_putnbr_fd(out, 1);
-	else
-		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
-}
+int		ft_printf(const char *, ...);
+
+#endif

@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:20 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/14 13:30:53 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/24 11:08:55 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	out;
+	char	*str;
+	int		i;
 
-	if (nbr > 16)
-		ft_puthexa(nbr / 16, is_maj_or_min);
-	out = nbr % 16;
-	if (out < 10)
-		ft_putnbr_fd(out, 1);
-	else
-		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

@@ -5,52 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 16:05:22 by alrobert          #+#    #+#             */
-/*   Updated: 2022/10/31 19:27:44 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/04 17:56:11 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./includes/libft.h"
+#include "ft_printf.h"
 
-static void	ft_print_memory(const void *addr)
+int	get_len_arg(const char *str)
 {
-//	ft_putstr_fd((unsigned long int)addr, 1);
+	return (ft_strlen(str));
 }
 
-static int	ft_check_next(int i, char c, va_list args)
+int	check_args(const char *s, va_list args)
 {
-	if (c == 'c')
-		ft_putchar_fd(va_arg(args, int), 1);
-	else if (c == 's')
-		ft_putstr_fd(va_arg(args, char *), 1);
-	else if (c == 'd' || c == 'i')
-		ft_putstr_fd(ft_itoa(va_arg(args, int)), 1);
-	else if (c == '%')
-		ft_putchar_fd('%', 1);
-	else if (c == 'p')
-		ft_print_memory(va_arg(args, void *));
-	return (i + 1);
+	int			len;
+
+	len = 0;
+
+	return (len);
 }
 
+int	check_flags(const char s)
+{
+
+}
+
+/*
+int	check_field_width(const char *s)
+{
+	return (0);
+}
+
+int	check_precision(const char *s)
+{
+	return (0);
+}
+*/
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
 	int		i;
-
-//	nb_args = ft_get_nb_args(str);
+	int		len;
+	
+	len = 0;
 	va_start(args, s);
 	i = -1;
 	while (s[++i])
 	{
 		if (s[i] == '%')
 		{
-			i = ft_check_next(i, s[i +1], args);
+			i += check_args(s + i, args);
 			continue ;
 		}
 		ft_putchar_fd(s[i], 1);
 	}
+	len += i;
 	va_end(args);
-	return (0);
+	return (len);
 }
-

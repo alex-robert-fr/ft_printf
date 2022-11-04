@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/04 17:17:42 by alrobert         ###   ########.fr       */
+/*   Created: 2022/09/30 09:05:39 by alrobert          #+#    #+#             */
+/*   Updated: 2022/09/30 09:16:21 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
-
-int main(void)
+int	ft_tolower(int c)
 {
-	int	i = 1000;
-	char *str = "My string";
-
-	printf("Test %25i\n", i);
-	printf("Test %25.10i\n", i);
-	printf("Test %25.7i\n", i);
-	printf("------------------------MY FT_PRINTF---------------------------\n");
-	ft_printf("Hello world!\n");
-	ft_printf("Hello %s!\n", str);
-	return (0);
+	if (c > 64 && c < 91)
+		return (c + 32);
+	return (c);
 }

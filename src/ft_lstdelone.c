@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:20 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/25 14:23:12 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/25 17:52:24 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int	out;
-
-	if (nbr > 16)
-		ft_puthexa(nbr / 16, is_maj_or_min);
-	out = nbr % 16;
-	if (out < 10)
-		ft_putnbr_fd(out, 1);
-	else
-		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

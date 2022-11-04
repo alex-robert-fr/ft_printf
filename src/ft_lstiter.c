@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/04 17:17:42 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/25 16:31:52 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/25 16:38:06 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	i = 1000;
-	char *str = "My string";
-
-	printf("Test %25i\n", i);
-	printf("Test %25.10i\n", i);
-	printf("Test %25.7i\n", i);
-	printf("------------------------MY FT_PRINTF---------------------------\n");
-	ft_printf("Hello world!\n");
-	ft_printf("Hello %s!\n", str);
-	return (0);
+	if (!lst || !f)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

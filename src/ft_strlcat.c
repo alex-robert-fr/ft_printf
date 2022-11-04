@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:20 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/14 14:13:32 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/26 10:07:11 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
+size_t	ft_strlcat(char *dest, const char *src, size_t n)
 {
-	int	out;
+	size_t	i;
+	size_t	dst_len;
 
-	if (nbr > 16)
-		ft_puthexa(nbr / 16, is_maj_or_min);
-	out = nbr % 16;
-	if (out < 10)
-		ft_putnbr_fd(out, 1);
-	else
-		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
+	if (n == 0)
+		return (ft_strlen(src));
+	dst_len = ft_strlen(dest);
+	if (n < dst_len)
+		return (ft_strlen(src) + n);
+	i = 0;
+	while (src[i] && (i + dst_len) < (n - 1))
+	{
+		dest[i + dst_len] = src[i];
+		i++;
+	}
+	dest[i + dst_len] = '\0';
+	return (ft_strlen(src) + dst_len);
 }

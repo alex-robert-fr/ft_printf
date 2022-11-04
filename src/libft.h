@@ -6,7 +6,7 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:26:54 by alrobert          #+#    #+#             */
-/*   Updated: 2022/10/31 19:26:15 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/04 16:57:42 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_lstsize(t_list *lst);
 int		ft_atoi(const char *nptr);
-int		ft_printf(const char *, ...);
+int		ft_putstr_fd(const char *s, int fd);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_itoa(int n);
@@ -48,9 +48,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
-void	ft_puthexa(unsigned long int nbr);
+void	ft_puthexa(unsigned long int nbr, int is_maj_or_min);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_lstadd_back(t_list **lst, t_list *new);

@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:20 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/10 14:32:54 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/25 17:38:31 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	out;
+	size_t	i;
 
-	if (nbr > 16)
-		ft_puthexa(nbr / 16, is_maj_or_min);
-	out = nbr % 16;
-	if (out < 10)
-		ft_putnbr_fd(out, 1);
-	else
-		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s1)[i] < ((unsigned char *)s2)[i])
+			return (-1);
+		if (((unsigned char *)s1)[i] > ((unsigned char *)s2)[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

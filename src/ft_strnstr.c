@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:20 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/14 15:54:51 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/26 10:11:39 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h" 
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	out;
+	size_t	i;
+	size_t	j;
 
-	if (nbr > 16)
-		ft_puthexa(nbr / 16, is_maj_or_min);
-	out = nbr % 16;
-	if (out < 10)
-		ft_putnbr_fd(out, 1);
-	else
-		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
+	if (!big && len == 0)
+		return (NULL);
+	if (!little[0])
+		return ((char *)big);
+	i = 0;
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (big[i + j] == little[j] && (i + j) < len)
+		{
+			if (j == (ft_strlen(little) - 1))
+				return ((char *)(big + i));
+			j++;
+		}
+		i++;
+	}
+	return (NULL);
 }

@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/02 14:39:20 by alrobert         ###   ########.fr       */
+/*   Created: 2022/09/27 15:24:59 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/19 16:38:41 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	out;
+	size_t	i;
 
-	if (nbr > 16)
-		ft_puthexa(nbr / 16, is_maj_or_min);
-	out = nbr % 16;
-	if (out < 10)
-		ft_putnbr_fd(out, 1);
+	if (!dest && !src)
+		return (NULL);
+	if (dest == src)
+		return (dest);
+	i = 0;
+	if (dest > src)
+	{
+		while (i < n)
+		{
+			((char *)dest)[n - 1] = ((char *)src)[n - 1];
+			n--;
+		}
+	}
 	else
-		ft_putchar_fd(out + (is_maj_or_min - 10), 1);
+	{
+		while (i < n)
+		{
+			((char *)dest)[i] = ((char *)src)[i];
+			i++;
+		}
+	}
+	return (dest);
 }

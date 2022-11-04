@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/04 17:17:42 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/10 14:59:46 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/19 12:14:00 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+char	*ft_strdup(const char *s)
 {
-	int	i = 1000;
-	char *str = "My string";
+	char	*str;
+	int		i;
 
-	printf("Test %25i\n", i);
-	printf("Test %25.10i\n", i);
-	printf("Test %25.7i\n", i);
-	printf("------------------------MY FT_PRINTF---------------------------\n");
-	ft_printf("Hello world!\n");
-	ft_printf("Hello %s!\n", str);
-	return (0);
+	str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/04 17:17:42 by alrobert         ###   ########.fr       */
+/*   Created: 2022/10/24 17:37:42 by alrobert          #+#    #+#             */
+/*   Updated: 2022/10/25 17:49:16 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+int	ft_lstsize(t_list *lst)
 {
-	int	i = 1000;
-	char *str = "My string";
+	int	i;
 
-	printf("Test %25i\n", i);
-	printf("Test %25.10i\n", i);
-	printf("Test %25.7i\n", i);
-	printf("------------------------MY FT_PRINTF---------------------------\n");
-	ft_printf("Hello world!\n");
-	ft_printf("Hello %s!\n", str);
-	return (0);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
