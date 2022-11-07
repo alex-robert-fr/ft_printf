@@ -1,7 +1,0 @@
-1) Parcourir toute la chaine
-2) Si '%' regarder caractere suivant
-3) Si s[i + 1] == digit || '-' || '0' || '#'
-	4) On get number
-5) Puis on recupere la lettre
-6) Calculer len arg
-7) 

@@ -6,7 +6,7 @@
 #    By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 14:23:23 by alrobert          #+#    #+#              #
-#    Updated: 2022/10/26 11:31:35 by alrobert         ###   ########.fr        #
+#    Updated: 2022/11/07 19:35:26 by alrobert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = ft_atoi.c \
 	ft_strrchr.c \
 	ft_calloc.c \
 	ft_itoa.c \
+	ft_nblen.c \
 	ft_memset.c \
 	ft_split.c \
 	ft_strlcpy.c \

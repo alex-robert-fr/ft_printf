@@ -1,8 +1,8 @@
 NAME=libftprintf.a
 CC=gcc
 LIBFT_PATH=./src
-SRC=ft_puthexa.c \
-ft_printf.c \
+SRC=ft_printf.c \
+type_management.c \
 main.c
 CFLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
@@ -24,7 +24,7 @@ run: all
 	gcc $(SRC) -L. -lftprintf
 	./a.out
 debug: all
-	gcc -g $(SRC) -L. -lftprintf
+	gcc -g $(SRC) -L. -lftprintf $(CFLAGS)
 	gdb ./a.out
 .PHONY:
 	all clear fclean re bonus

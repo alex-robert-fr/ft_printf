@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_nblen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/07 19:46:28 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/07 19:28:09 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/07 19:32:18 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "ft_printf.h"
+#include "libft.h"
 
-int main(void)
+size_t	ft_nblen(int nb)
 {
+	int	i;
 
-	printf("------------------------MY FT_PRINTF---------------------------\n");
-	ft_printf("%i, %i%i | %c     %c ??? %s, %s", 2, 673, 17, 'a', 'A', "Hello", "World!");
-	return (0);
+	i = 0;
+	if (nb < 0)
+		nb *= -1;
+	while (nb)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
 }
