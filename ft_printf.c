@@ -17,31 +17,82 @@ int	get_len_arg(const char *str)
 	return (ft_strlen(str));
 }
 
-int	check_args(const char *s, va_list args)
+/*
+int	check_flags(const char *s, va_list args)
 {
-	int			len;
+	if (*s == '-')
+		return ('-');
+	else if (*s == '0')
+		return ('0');
+	else if (*s == ' ')
+		return (' ');
+	else if (*s == '#')
+		return ('#');
+	else if (*s == '+')
+		return ('+');
+	return (0);
+}
+*/
+int	check_arg_type(const char *s, va_list args)
+{
+	int	len;
 
 	len = 0;
-
+	if (*s == 'c')
+		len = ft_putchar_fd(va_arg(args, int), 1);
+	else if (*s == 's')
+		return ('s');
+	else if (*s == 'p')
+		return ('p');
+	else if (*s == 'd')
+		return ('d');
+	else if (*s == 'i')
+		return ('i');
+	else if (*s == 'u')
+		return ('u');
+	else if (*s == 'x')
+		return ('x');
+	else if (*s == 'X')
+		return ('X');
+	else if (*s == '%')
+		return ('%');
 	return (len);
 }
 
-int	check_flags(const char s)
+int	ft_get_number(const char *s)
 {
+	char	*str_nb;
+	int	len;
 
+	len = 0;
+	while (ft_isdigit(s[len]))
+		len++;
+	str_nb = ft_substr(s, 0, len);
+	return (atoi(str_nb));
 }
 
-/*
-int	check_field_width(const char *s)
+int	check_field_width(const char *s, va_list args)
 {
+	
 	return (0);
 }
-
+/*
 int	check_precision(const char *s)
 {
 	return (0);
 }
 */
+int	check_args(const char *s, va_list args)
+{
+	int	len;
+	void	*arg;
+
+	len = 0;
+//	len += check_flags(s, args);
+	len += check_arg_type(s, args);
+	return (len);
+}
+
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
@@ -55,7 +106,7 @@ int	ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			i += check_args(s + i, args);
+			i += check_args(s + 1, args);
 			continue ;
 		}
 		ft_putchar_fd(s[i], 1);

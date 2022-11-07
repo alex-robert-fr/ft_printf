@@ -16,13 +16,14 @@
 int main(void)
 {
 	int	i = 1000;
-	char *str = "My string";
+	char c = 'a';
 
 	printf("Test %25i\n", i);
 	printf("Test %25.10i\n", i);
 	printf("Test %25.7i\n", i);
 	printf("------------------------MY FT_PRINTF---------------------------\n");
 	ft_printf("Hello world!\n");
-	ft_printf("Hello %s!\n", str);
+	ft_printf("Hello %c!\n", c);
+	ft_printf("Hello %10c!\n", c);
 	return (0);
 }
