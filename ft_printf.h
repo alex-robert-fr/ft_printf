@@ -6,7 +6,7 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/04 17:25:33 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/07 11:34:46 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 #include "./src/libft.h"
 # include <stdarg.h>
+
+typedef struct s_info_printf
+{
+	int	len;
+	int	margin;
+	int	minus_flag;
+}	t_info_printf;
 
 int		ft_printf(const char *, ...);
 

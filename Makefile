@@ -23,5 +23,8 @@ re: fclean all
 run: all 
 	gcc $(SRC) -L. -lftprintf
 	./a.out
+debug: all
+	gcc -g $(SRC) -L. -lftprintf
+	gdb ./a.out
 .PHONY:
 	all clear fclean re bonus
