@@ -3,8 +3,11 @@ CC=gcc
 LIBFT_PATH=./src
 SRC=ft_printf.c \
 type_management.c \
+flag_management.c \
+convert_management.c \
+margin_management.c \
 main.c
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
