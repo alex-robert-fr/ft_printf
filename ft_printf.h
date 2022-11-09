@@ -6,28 +6,22 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/08 14:40:59 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/09 15:41:38 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # define MAX_TYPE 3
-# define MAX_CONVERT 1
+# define MAX_CONVERT 2
 
 #include "./src/libft.h"
 # include <stdarg.h>
 
-typedef struct s_info_current_arg
+typedef struct s_info_printf
 {
-	int		_int;
-	char	*_char;
-	int		len;
-	int		justify_left;
-	int		margin;
-	int		precision;
-	char	c_margin;
-}	t_info_current_arg;
+	int		total_len;
+}	t_info_printf;
 
 typedef enum a_type
 {
@@ -35,6 +29,18 @@ typedef enum a_type
 	CHAR,
 	_NULL,
 }	arg_type;
+
+typedef struct s_info_current_arg
+{
+	int			_int;
+	char		*_char;
+	int			len;
+	int			justify_left;
+	int			margin;
+	int			precision;
+	char		c_margin;
+	arg_type	type;
+}	t_info_current_arg;
 
 typedef struct	s_type
 {

@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/08 15:11:03 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/09 18:08:35 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 {
-	arg_type	type;
-
-	type = check_type(str);
-	if (type == INT)
+	char	*str_tmp;
+	info_arg->type = check_type(str);
+	if (info_arg->type == INT)
 	{
 		info_arg->_int = va_arg(args, int);
 		info_arg->_char = NULL;
@@ -27,16 +26,21 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 		else
 			info_arg->len = ft_nblen(info_arg->_int);
 	}
-	else if (type == CHAR)
+	else if (info_arg->type == CHAR)
 	{
-		info_arg->_char = va_arg(args, char *);
-		info_arg->len = ft_strlen(info_arg->_char);
+		str_tmp = va_arg(args, char *);
+		info_arg->len = ft_strlen(str_tmp);
+		if (!info_arg->len)
+			return (0);
+		info_arg->_char = ft_calloc(info_arg->len, sizeof(char));
+		info_arg->_char = str_tmp;
+		// strcpy -> malloc
+//		free(str_tmp);
 	}
-//	ft_putnbr_fd(info_arg->len, 1);
 	return (0);
 }
 
-int	process_current_arg(const char *str, va_list args)
+int	process_current_arg(const char *str, va_list args, t_info_printf *info_print)
 {
 	t_info_current_arg info_arg;
 	int	i;
@@ -48,16 +52,20 @@ int	process_current_arg(const char *str, va_list args)
 	info_arg.margin = 0;
 	info_arg.precision = 0;
 	info_arg.c_margin = 0;
+	info_arg.type = _NULL;
 	i = 0;
 	i += check_flag(str + i, &info_arg);
 	i += get_margin_and_precision(str + i, &info_arg);
 	i += check_args(str + i, args, &info_arg);
-//	ft_putstr_fd("\nMargin: ", 1);
-//	ft_putnbr_fd(info_arg.margin, 1);
-//	ft_putstr_fd("\nLen: ", 1);
-//	ft_putnbr_fd(info_arg.len, 1);
-//	ft_putstr_fd("\n", 1);
-	i += check_convert_letter(str[i], &info_arg._int, &info_arg);
+	if (info_arg.type == INT)
+		i += check_convert_letter(str[i], &info_arg._int, &info_arg);
+	else if (info_arg.type == CHAR)
+		i += check_convert_letter(str[i], &info_arg._char, &info_arg);
+	if (info_arg.margin >= info_arg.len)
+		info_print->total_len += info_arg.margin;
+	else
+		info_print->total_len += info_arg.len;
+//	free(info_arg._char);
 	return (i);
 }
 
@@ -66,19 +74,21 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	args;
 	int		i;
+	t_info_printf info_print;
 
+	info_print.total_len = 0;
 	va_start(args, s);
 	i = -1;
 	while (s[++i])
 	{
 		if (s[i] == '%')
 		{
-			i += process_current_arg(s + i + 1, args);
-
+			i += process_current_arg(s + i + 1, args, &info_print);
 			continue ;
 		}
 		ft_putchar_fd(s[i], 1);
+		info_print.total_len++;
 	}
 	va_end(args);
-	return (i);
+	return (info_print.total_len);
 }
