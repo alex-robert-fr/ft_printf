@@ -6,7 +6,7 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:26:54 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/07 19:32:28 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:46:10 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 size_t	ft_nblen(int nb);
 size_t	ft_strlen(const char *c);
+size_t	ft_memlen(unsigned long int nbr);
 size_t	ft_strlcat(char *dest, const char *src, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 

@@ -6,7 +6,7 @@
 #    By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 14:23:23 by alrobert          #+#    #+#              #
-#    Updated: 2022/11/07 19:35:26 by alrobert         ###   ########.fr        #
+#    Updated: 2022/11/10 17:14:53 by alrobert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC = ft_atoi.c \
 	ft_putnbr_fd.c \
 	ft_striteri.c \
 	ft_strncmp.c \
+	ft_memlen.c \
 	ft_toupper.c
 BONUS = ft_lstnew.c \
 		ft_lstadd_front.c \

@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 16:31:30 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:26:39 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	if (info_arg->type == INT)
 	{
 		info_arg->_int = va_arg(args, int);
-		info_arg->_char = NULL;
+//		info_arg->_char = NULL;
 		if (*str == 'c')
 			info_arg->len = 1;
 		else
@@ -38,6 +38,14 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 			info_arg->len = 6;
 		if (!info_arg->len && info_arg->_char)
 			return (0);
+	}
+	else if (info_arg->type == PTR)
+	{
+		va_copy(list_tmp, args);
+		info_arg->len = ft_memlen(va_arg(list_tmp, unsigned long int));
+		if (!info_arg->len)
+			info_arg->len = 5;
+		va_end(list_tmp);
 	}
 	return (0);
 }
@@ -65,6 +73,8 @@ int	process_current_arg(const char *str, va_list args, t_info_printf *info_print
 			i += check_convert_letter(str[i], &info_arg._int, &info_arg);
 		else if (info_arg.type == CHAR)
 			i += check_convert_letter(str[i], &info_arg._char, &info_arg);
+		else if (info_arg.type == PTR)
+			i += check_convert_letter(str[i], va_arg(args, void *), &info_arg);
 //	}
 	if (info_arg.margin >= info_arg.len)
 		info_print->total_len += info_arg.margin;

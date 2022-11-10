@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_management.c                                  :+:      :+:    :+:   */
+/*   ft_memlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:00:54 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 16:51:34 by alrobert         ###   ########.fr       */
+/*   Created: 2022/11/10 17:09:29 by alrobert          #+#    #+#             */
+/*   Updated: 2022/11/10 17:29:32 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-arg_type	check_type(const char *str)
+size_t	ft_memlen(unsigned long int nbr)
 {
 	int	i;
 
 	i = 0;
-	while (!ft_isalpha(str[i]))
-		i++;
-	return (get_type(str[i]));
-}
-
-arg_type	get_type(const char flag)
-{
-	const	t_type	t[MAX_TYPE] = {
-		{ 'c', INT },
-		{ 'i', INT },
-		{ 's', CHAR },
-		{ 'p', PTR },
-	};
-	int	i;
-
-	i = 0;
-	while (i < MAX_TYPE)
+	while (nbr >= 16)
 	{
-		if (t[i].flag == flag)
-			return (t[i].type);
+		nbr /= 16;
 		i++;
 	}
-	return (_NULL);
+	if (nbr > 0)
+		i++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 16:37:48 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:23:03 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ int main(void)
 {
 	int	print;
 	int	ftprint;
+	char	*ptr = "Hello";
 
 //	print = printf("Hello %-1c", '0');
 //	printf("\n------------------------MY FT_PRINTF---------------------------\n");
-	ftprint = ft_printf("-%1s-", "");
-	print = printf("-%1s-", "");
+	ftprint = ft_printf(" %p %p \n", 0, 0);
+	print = printf(" %p %p \n", 0, 0);
 	printf("\nPrint: %i\nFtprint: %i", print, ftprint);
 	//ft_printf("%i, %i%i | %c     %c ??? %s, %s", 2, 673, 17, 'a', 'A', "Hello", "World!");
 	return (0);
