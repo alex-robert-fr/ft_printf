@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:25:32 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 17:25:06 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/10 23:01:49 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	s_convert(void *arg, t_info_current_arg *info)
 
 void	p_convert(void *arg, t_info_current_arg *info)
 {
+	if (!info->justify_left && (info->margin || info->precision))
+		ft_putmargin(info);
 	if (!(unsigned long int)arg)
 		ft_putstr_fd("(nil)", 1);
 	else
@@ -43,6 +45,8 @@ void	p_convert(void *arg, t_info_current_arg *info)
 		info->len += 2;
 		ft_puthexa((unsigned long int)arg, 'a');
 	}
+	if (info->justify_left && (info->margin || info->precision))
+		ft_putmargin(info);
 }
 
 int	check_convert_letter(const char letter, void *arg, t_info_current_arg *info)
