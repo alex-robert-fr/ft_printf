@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:25:32 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/09 18:07:10 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:37:16 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,14 @@ int	c_convert(void *arg, t_info_current_arg *info)
 
 int	s_convert(void *arg, t_info_current_arg *info)
 {
-	ft_putstr_fd(info->_char, 1);
+	if (!info->justify_left && (info->margin || info->precision))
+		ft_putmargin(info);
+	if (!info->_char)
+		ft_putstr_fd("(null)", 1);
+	else
+		ft_putstr_fd(info->_char, 1);
+	if (info->justify_left && (info->margin || info->precision))
+		ft_putmargin(info);
 }
 
 int	check_convert_letter(const char letter, void *arg, t_info_current_arg *info)
