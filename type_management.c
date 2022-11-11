@@ -29,6 +29,7 @@ arg_type	get_type(const char flag)
 		{ 'i', INT },
 		{ 's', CHAR },
 		{ 'p', PTR },
+		{ 'd', INT },
 	};
 	int	i;
 

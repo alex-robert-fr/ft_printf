@@ -12,8 +12,8 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define MAX_TYPE 4
-# define MAX_CONVERT 3
+# define MAX_TYPE 5
+# define MAX_CONVERT 4
 
 #include "./src/libft.h"
 # include <stdarg.h>
@@ -34,7 +34,7 @@ typedef enum a_type
 typedef struct s_info_current_arg
 {
 	int			_int;
-	char		*_char;
+	char			*_char;
 	int			len;
 	int			justify_left;
 	int			margin;

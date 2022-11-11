@@ -18,7 +18,12 @@ size_t	ft_nblen(int nb)
 
 	i = 0;
 	if (nb < 0)
+	{
 		nb *= -1;
+		i++;
+	}
+	if (!nb)
+		i++;
 	while (nb)
 	{
 		nb /= 10;

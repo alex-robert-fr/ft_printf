@@ -49,12 +49,22 @@ void	p_convert(void *arg, t_info_current_arg *info)
 		ft_putmargin(info);
 }
 
+void	d_convert(void *arg, t_info_current_arg *info)
+{
+	if (!info->justify_left && (info->margin || info->precision))
+		ft_putmargin(info);
+	ft_putnbr_fd(info->_int, 1);
+	if (!info->justify_left && (info->margin || info->precision))
+		ft_putmargin(info);
+}
+
 int	check_convert_letter(const char letter, void *arg, t_info_current_arg *info)
 {
 	const t_convert	c[MAX_CONVERT] = {
 		{ 'c', c_convert },
 		{ 's', s_convert },
 		{ 'p', p_convert },
+		{ 'd', d_convert },
 	};
 	int	i;
 

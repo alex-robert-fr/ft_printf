@@ -22,8 +22,8 @@ int main(void)
 
 //	print = printf("Hello %-1c", '0');
 //	printf("\n------------------------MY FT_PRINTF---------------------------\n");
-	ftprint = ft_printf(" %-11p %-12p \n", INT_MIN, INT_MAX);
-	print = printf(" %-11p %-12p \n", INT_MIN, INT_MAX);
+	ftprint = ft_printf("#%-3d#", 1);
+	print = printf("#%-3d#", 1);
 	printf("\nPrint: %i\nFtprint: %i", print, ftprint);
 	//ft_printf("%i, %i%i | %c     %c ??? %s, %s", 2, 673, 17, 'a', 'A', "Hello", "World!");
 	return (0);
