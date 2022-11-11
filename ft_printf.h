@@ -6,14 +6,14 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 17:45:52 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 14:19:58 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # define MAX_TYPE 5
-# define MAX_CONVERT 4
+# define MAX_CONVERT 5
 
 #include "./src/libft.h"
 # include <stdarg.h>
@@ -34,7 +34,7 @@ typedef enum a_type
 typedef struct s_info_current_arg
 {
 	int			_int;
-	char			*_char;
+	char		*_char;
 	int			len;
 	int			justify_left;
 	int			margin;
