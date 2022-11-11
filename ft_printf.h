@@ -6,14 +6,14 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/11 14:19:58 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 18:01:34 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define MAX_TYPE 5
-# define MAX_CONVERT 5
+# define MAX_TYPE 7
+# define MAX_CONVERT 7
 
 #include "./src/libft.h"
 # include <stdarg.h>
@@ -26,6 +26,8 @@ typedef struct s_info_printf
 typedef enum a_type
 {
 	INT,
+	U_INT,
+	U_LONG,
 	CHAR,
 	PTR,
 	_NULL,
@@ -33,8 +35,9 @@ typedef enum a_type
 
 typedef struct s_info_current_arg
 {
-	int			_int;
+	long		_int;
 	char		*_char;
+	unsigned long	_u_long;
 	int			len;
 	int			justify_left;
 	int			margin;
@@ -60,7 +63,6 @@ int		check_flag(const char *flag, t_info_current_arg *info);
 int		check_convert_letter(const char letter, void *arg, t_info_current_arg *info);
 int		get_margin_and_precision(const char *str, t_info_current_arg *info);
 void	ft_putmargin(t_info_current_arg *info);
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min);
 arg_type	get_type(const char flag);
 arg_type	check_type(const char *str);
 

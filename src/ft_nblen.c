@@ -6,13 +6,13 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:28:09 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/07 19:32:18 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:23:11 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nblen(int nb)
+size_t	ft_nblen(long nb)
 {
 	int	i;
 

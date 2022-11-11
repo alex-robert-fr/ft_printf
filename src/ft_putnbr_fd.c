@@ -6,19 +6,19 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:48:58 by alrobert          #+#    #+#             */
-/*   Updated: 2022/10/25 17:39:28 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:19:30 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(long long n, int fd)
 {
 	char	c_nb;
 
-	if (n == -2147483648)
+	if (n == -9223372036854775807)
 	{
-		write(fd, "-2147483648", 11);
+		write(fd, "-9223372036854775807", 20);
 		return ;
 	}
 	else

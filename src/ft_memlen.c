@@ -6,17 +6,19 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:09:29 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 17:29:32 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:49:42 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_memlen(unsigned long int nbr)
+size_t	ft_memlen(unsigned long nbr)
 {
 	int	i;
 
 	i = 0;
+	if (!nbr)
+		i++;
 	while (nbr >= 16)
 	{
 		nbr /= 16;

@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 17:26:39 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 18:12:05 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,25 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	if (info_arg->type == INT)
 	{
 		info_arg->_int = va_arg(args, int);
-//		info_arg->_char = NULL;
 		if (*str == 'c')
 			info_arg->len = 1;
 		else
 			info_arg->len = ft_nblen(info_arg->_int);
+	}
+	else if (info_arg->type == U_INT)
+	{
+		if (*str == 'x')
+			info_arg->len = ft_memlen(va_arg(args, unsigned int));
+		else
+			info_arg->_int = va_arg(args, unsigned int);
+		info_arg->len = ft_nblen(info_arg->_int);
+	}
+	else if (info_arg->type == U_LONG)
+	{
+		va_copy(list_tmp, args);
+		info_arg->len = ft_memlen(va_arg(list_tmp, unsigned int));
+		va_end(list_tmp);
+		info_arg->_u_long = va_arg(args, unsigned int);
 	}
 	else if (info_arg->type == CHAR)
 	{
@@ -42,8 +56,9 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	else if (info_arg->type == PTR)
 	{
 		va_copy(list_tmp, args);
-		info_arg->len = ft_memlen(va_arg(list_tmp, unsigned long int));
-		if (!info_arg->len)
+		info_arg->len = ft_memlen(va_arg(list_tmp, unsigned long));
+		//ICI
+		if (info_arg->len)
 			info_arg->len = 5;
 		va_end(list_tmp);
 	}
@@ -57,6 +72,7 @@ int	process_current_arg(const char *str, va_list args, t_info_printf *info_print
 
 	info_arg._int = 0x0;
 	info_arg._char = 0x0;
+	info_arg._u_long = 0x0;
 	info_arg.len = 0;
 	info_arg.justify_left = 0;
 	info_arg.margin = 0;
@@ -67,15 +83,14 @@ int	process_current_arg(const char *str, va_list args, t_info_printf *info_print
 	i += check_flag(str + i, &info_arg);
 	i += get_margin_and_precision(str + i, &info_arg);
 	i += check_args(str + i, args, &info_arg);
-//	if (info_arg.len || !info_arg._char || info_arg.margin)
-//	{
-		if (info_arg.type == INT)
-			i += check_convert_letter(str[i], &info_arg._int, &info_arg);
-		else if (info_arg.type == CHAR)
-			i += check_convert_letter(str[i], &info_arg._char, &info_arg);
-		else if (info_arg.type == PTR)
-			i += check_convert_letter(str[i], va_arg(args, void *), &info_arg);
-//	}
+	if (info_arg.type == INT || info_arg.type == U_INT)
+		i += check_convert_letter(str[i], &info_arg._int, &info_arg);
+	else if (info_arg.type == CHAR)
+		i += check_convert_letter(str[i], &info_arg._char, &info_arg);
+	else if (info_arg.type == U_LONG)
+		i += check_convert_letter(str[i], &info_arg._u_long, &info_arg);
+	else if (info_arg.type == PTR)
+		i += check_convert_letter(str[i], va_arg(args, void *), &info_arg);
 	if (info_arg.margin >= info_arg.len)
 		info_print->total_len += info_arg.margin;
 	else

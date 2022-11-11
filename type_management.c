@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:00:54 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/11 14:19:29 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:17:47 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ arg_type	get_type(const char flag)
 		{ 'p', PTR },
 		{ 'd', INT },
 		{ 'i', INT },
+		{ 'u', U_INT },
+		{ 'x', U_INT },
 	};
 	int	i;
 

@@ -6,13 +6,13 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 19:09:07 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/10 17:21:59 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:47:18 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_puthexa(unsigned long int nbr, int is_maj_or_min)
+void	ft_puthexa(unsigned long nbr, int is_maj_or_min)
 {
 	int	out;
 
