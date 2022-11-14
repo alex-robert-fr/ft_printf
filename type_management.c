@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:00:54 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 16:36:51 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:58:44 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ arg_type	check_type(const char *str)
 	int	i;
 
 	i = 0;
-	while (!ft_isalpha(str[i]))
+	while (!ft_isalpha(str[i]) && *str != '%')
 		i++;
 	return (get_type(str[i]));
 }
@@ -33,6 +33,7 @@ arg_type	get_type(const char flag)
 		{ 'u', U_INT },
 		{ 'x', U_INT },
 		{ 'X', U_INT },
+		{ '%', PRC },
 	};
 	int	i;
 

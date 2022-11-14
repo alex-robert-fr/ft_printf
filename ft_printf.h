@@ -6,14 +6,14 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 16:36:51 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:54:17 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define MAX_TYPE 8
-# define MAX_CONVERT 8
+# define MAX_TYPE 9
+# define MAX_CONVERT 9
 
 #include "./src/libft.h"
 # include <stdarg.h>
@@ -30,6 +30,7 @@ typedef enum a_type
 	U_LONG,
 	CHAR,
 	PTR,
+	PRC,
 	_NULL,
 }	arg_type;
 

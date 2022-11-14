@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 16:40:16 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:56:31 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	char	*tmp;
 
 	info_arg->type = check_type(str);
+	if (*str == '%')
+	{
+			info_arg->len = 1;
+			return (0);
+	}
 	if (info_arg->type == INT)
 	{
 		info_arg->_int = va_arg(args, int);
@@ -97,6 +102,8 @@ int	process_current_arg(const char *str, va_list args, t_info_printf *info_print
 		i += check_convert_letter(str[i], &info_arg._u_long, &info_arg);
 	else if (info_arg.type == PTR)
 		i += check_convert_letter(str[i], va_arg(args, void *), &info_arg);
+	else if (info_arg.type == PRC)
+		i += check_convert_letter(str[i], NULL, &info_arg);
 	if (info_arg.margin >= info_arg.len)
 		info_print->total_len += info_arg.margin;
 	else
