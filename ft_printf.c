@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 16:56:31 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:41:53 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	if (info_arg->type == INT)
 	{
 		info_arg->_int = va_arg(args, int);
+		/*
+		if (*str == 'c' && !info_arg->_int)
+		{
+			info_arg->_int = 37;
+			info_arg->len = 2;
+		}
+		*/
 		if (*str == 'c')
 			info_arg->len = 1;
 		else
@@ -123,7 +130,7 @@ int	ft_printf(const char *s, ...)
 	i = -1;
 	while (s[++i])
 	{
-		if (s[i] == '%')
+		if (s[i] == '%' )
 		{
 			i += process_current_arg(s + i + 1, args, &info_print);
 			continue ;
