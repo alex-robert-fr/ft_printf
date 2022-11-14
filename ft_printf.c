@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 16:33:02 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:40:16 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	}
 	else if (info_arg->type == U_INT)
 	{
-		if (*str == 'x')
+		if (*str == 'x' || *str == 'X')
 		{
 			va_copy(list_tmp, args);
 			info_arg->len = ft_memlen(va_arg(list_tmp, unsigned int));

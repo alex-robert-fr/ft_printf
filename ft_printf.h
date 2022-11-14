@@ -6,14 +6,14 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/11 18:01:34 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:36:51 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# define MAX_TYPE 7
-# define MAX_CONVERT 7
+# define MAX_TYPE 8
+# define MAX_CONVERT 8
 
 #include "./src/libft.h"
 # include <stdarg.h>
