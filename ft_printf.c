@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/11 18:12:05 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:14:10 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 {
 	va_list	list_tmp;
+	unsigned long ptr;
 	char	*tmp;
 
 	info_arg->type = check_type(str);
@@ -56,10 +57,11 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	else if (info_arg->type == PTR)
 	{
 		va_copy(list_tmp, args);
-		info_arg->len = ft_memlen(va_arg(list_tmp, unsigned long));
-		//ICI
-		if (info_arg->len)
+		ptr = va_arg(list_tmp, unsigned long);
+		if (!ptr)
 			info_arg->len = 5;
+		else
+			info_arg->len = ft_memlen(ptr);
 		va_end(list_tmp);
 	}
 	return (0);
