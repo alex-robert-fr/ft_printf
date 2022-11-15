@@ -6,7 +6,7 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 16:54:17 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:22:05 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ typedef struct s_info_current_arg
 	int			len;
 	int			justify_left;
 	int			margin;
+	int			add_space;
 	int			precision;
+	int			is_positive;
+	int			is_precision;
 	char		c_margin;
 	arg_type	type;
 }	t_info_current_arg;

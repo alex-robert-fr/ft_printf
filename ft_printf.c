@@ -6,10 +6,9 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/15 14:27:40 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:24:17 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
 #include "ft_printf.h"
 
@@ -34,6 +33,8 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 			info_arg->len = 1;
 		else
 			info_arg->len = ft_nblen(info_arg->_int);
+		if (info_arg->is_positive && info_arg->_int > 0)
+			info_arg->_int *= -1;
 	}
 	else if (info_arg->type == U_INT)
 	{
@@ -88,8 +89,11 @@ int	process_current_arg(const char *str, va_list args, t_info_printf *info_print
 	info_arg._u_long = 0x0;
 	info_arg.len = 0;
 	info_arg.justify_left = 0;
+	info_arg.add_space = 0;
 	info_arg.margin = 0;
 	info_arg.precision = 0;
+	info_arg.is_positive = 0;
+	info_arg.is_precision = 0;
 	info_arg.c_margin = 0;
 	info_arg.type = _NULL;
 	i = 0;
@@ -106,10 +110,16 @@ int	process_current_arg(const char *str, va_list args, t_info_printf *info_print
 		i += check_convert_letter(str[i], va_arg(args, void *), &info_arg);
 	else if (info_arg.type == PRC)
 		i += check_convert_letter(str[i], NULL, &info_arg);
+	if (info_arg.add_space)
+		info_arg.margin++;
 	if (info_arg.margin >= info_arg.len)
 		info_print->total_len += info_arg.margin;
 	else
+	{
+		if (info_arg.is_precision && info_arg.precision == 0)
+			info_arg.len = 0;
 		info_print->total_len += info_arg.len;
+	}
 	return (i);
 }
 

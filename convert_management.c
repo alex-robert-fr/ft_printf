@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:25:32 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/15 14:20:41 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:10:47 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	c_convert(void *arg, t_info_current_arg *info)
 {
+	if (info->add_space)
+		ft_putchar_fd(' ', 1);
 	if (!info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
 	ft_putchar_fd(*((char*)arg), 1);
@@ -23,12 +25,13 @@ void	c_convert(void *arg, t_info_current_arg *info)
 
 void	s_convert(void *arg, t_info_current_arg *info)
 {
+	if (info->add_space)
+		ft_putchar_fd(' ', 1);
 	if (!info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
 	if (!info->_char)
 		ft_putstr_fd("(null)", 1);
-	else
-		ft_putstr_fd(info->_char, 1);
+	ft_putstr_fd(info->_char, 1);
 	if (info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
 }
