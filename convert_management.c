@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   convert_management.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:25:32 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/15 16:10:47 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:50:31 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	c_convert(void *arg, t_info_current_arg *info)
+void	c_convert(void *arg, t_info_cur_arg *info)
 {
 	if (info->add_space)
 		ft_putchar_fd(' ', 1);
@@ -23,7 +23,7 @@ void	c_convert(void *arg, t_info_current_arg *info)
 		ft_putmargin(info);
 }
 
-void	s_convert(void *arg, t_info_current_arg *info)
+void	s_convert(void *arg, t_info_cur_arg *info)
 {
 	if (info->add_space)
 		ft_putchar_fd(' ', 1);
@@ -36,7 +36,7 @@ void	s_convert(void *arg, t_info_current_arg *info)
 		ft_putmargin(info);
 }
 
-void	p_convert(void *arg, t_info_current_arg *info)
+void	p_convert(void *arg, t_info_cur_arg *info)
 {
 	if (!info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
@@ -52,7 +52,7 @@ void	p_convert(void *arg, t_info_current_arg *info)
 		ft_putmargin(info);
 }
 
-void	d_convert(void *arg, t_info_current_arg *info)
+void	d_convert(void *arg, t_info_cur_arg *info)
 {
 	if (info->_int < 0)
 	{
@@ -66,7 +66,7 @@ void	d_convert(void *arg, t_info_current_arg *info)
 		ft_putmargin(info);
 }
 
-void	x_convert(void *arg, t_info_current_arg *info)
+void	x_convert(void *arg, t_info_cur_arg *info)
 {
 	if (!info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
@@ -75,7 +75,7 @@ void	x_convert(void *arg, t_info_current_arg *info)
 		ft_putmargin(info);
 }
 
-void	xx_convert(void *arg, t_info_current_arg *info)
+void	xx_convert(void *arg, t_info_cur_arg *info)
 {
 	if (!info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
@@ -84,7 +84,7 @@ void	xx_convert(void *arg, t_info_current_arg *info)
 		ft_putmargin(info);
 }
 
-void	prc_convert(void *arg, t_info_current_arg *info)
+void	prc_convert(void *arg, t_info_cur_arg *info)
 {
 	if (!info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
@@ -92,7 +92,7 @@ void	prc_convert(void *arg, t_info_current_arg *info)
 	if (info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
 }
-int	check_convert_letter(const char letter, void *arg, t_info_current_arg *info)
+int	check_convert_letter(const char letter, void *arg, t_info_cur_arg *info)
 {
 	const t_convert	c[MAX_CONVERT] = {
 		{ 'c', c_convert },
