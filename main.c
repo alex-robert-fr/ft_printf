@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 13:32:30 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 17:54:32 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:28:50 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int main(void)
 
 //	print = printf("Hello %-1c", '0');
 	printf("\n------------------------MY FT_PRINTF---------------------------\n");
-	ftprint = ft_printf(" %04d \n", -14);
+	ftprint = ft_printf(" %010X \n", "test");
 	printf("\n-PRINTF---------------------------\n");
-	print = printf(" %04d \n", -14);
+	print = printf(" %010X \n", "test");
 	printf("\nPrint: %i\nFtprint: %i", print, ftprint);
 	//ft_printf("%i, %i%i | %c     %c ??? %s, %s", 2, 673, 17, 'a', 'A', "Hello", "World!");
 	return (0);

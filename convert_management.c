@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:25:32 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 16:48:06 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:20:41 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ void	p_convert(void *arg, t_info_current_arg *info)
 
 void	d_convert(void *arg, t_info_current_arg *info)
 {
+	if (info->_int < 0)
+	{
+		ft_putchar_fd('-', 1);
+		info->_int *= -1;
+	}
 	if (!info->justify_left && (info->margin || info->precision))
 		ft_putmargin(info);
 	ft_putnbr_fd(info->_int, 1);

@@ -6,7 +6,7 @@
 /*   By: alrobert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:23:46 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/14 17:41:53 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:27:40 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	char	*tmp;
 
 	info_arg->type = check_type(str);
+	if (*str == '%' || *str == 'c' || *str == 's' || *str == 'p')
+		info_arg->c_margin = ' ';
 	if (*str == '%')
 	{
 			info_arg->len = 1;
@@ -28,13 +30,6 @@ int	check_args(const char *str, va_list args, t_info_current_arg *info_arg)
 	if (info_arg->type == INT)
 	{
 		info_arg->_int = va_arg(args, int);
-		/*
-		if (*str == 'c' && !info_arg->_int)
-		{
-			info_arg->_int = 37;
-			info_arg->len = 2;
-		}
-		*/
 		if (*str == 'c')
 			info_arg->len = 1;
 		else
