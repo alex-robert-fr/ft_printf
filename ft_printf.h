@@ -6,7 +6,7 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 22:15:59 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/15 16:51:17 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:45:57 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,58 +16,25 @@
 # define MAX_CONVERT 9
 
 # include "./src/libft.h"
+# include "ft_printf_proto_struct.h"
 # include <stdarg.h>
 
-typedef struct s_info_printf
-{
-	int		total_len;
-}	t_info_printf;
-
-typedef enum a_type
-{
-	INT,
-	U_INT,
-	U_LONG,
-	CHAR,
-	PTR,
-	PRC,
-	_NULL,
-}	t_arg_type;
-
-typedef struct s_info_current_arg
-{
-	long			_int;
-	char			*_char;
-	unsigned long	_u_long;
-	int				len;
-	int				justify_left;
-	int				margin;
-	int				add_space;
-	int				precision;
-	int				is_positive;
-	int				is_precision;
-	char			c_margin;
-	t_arg_type		type;
-}	t_info_cur_arg;
-
-typedef struct s_type
-{
-	const char	flag;
-	t_arg_type	type;
-}	t_type;
-
-typedef struct s_convert
-{
-	const char	convert;
-	void		(*cb)(void *, t_info_cur_arg *);
-}	t_convert;
-
-int			ft_printf(const char *str, ...);
-int			check_flag(const char *flag, t_info_cur_arg *info);
-int			check_convert_letter(const char c, void *arg, t_info_cur_arg *info);
-int			get_margin_and_precision(const char *str, t_info_cur_arg *info);
-void		ft_putmargin(t_info_cur_arg *info);
-t_arg_type	get_type(const char flag);
-t_arg_type	check_type(const char *str);
+int				ft_printf(const char *str, ...);
+int				check_flag(const char *flag, t_info_cur_arg *info);
+int				get_margin(const char *str, t_info_cur_arg *info);
+void			ft_putmargin(t_info_cur_arg *info);
+void			check_args(const char *str, va_list args, t_info_cur_arg *arg);
+void			c_convert(void *arg, t_info_cur_arg *info);
+void			s_convert(void *arg, t_info_cur_arg *info);
+void			p_convert(void *arg, t_info_cur_arg *info);
+void			d_convert(void *arg, t_info_cur_arg *info);
+void			x_convert(void *arg, t_info_cur_arg *info);
+void			xx_convert(void *arg, t_info_cur_arg *info);
+void			prc_convert(void *arg, t_info_cur_arg *info);
+void			check_convert_c(const char c, void *arg, t_info_cur_arg *info);
+t_arg_type		get_type(const char flag);
+t_arg_type		check_type(const char *str);
+t_info_cur_arg	create_info_arg_struct(void);
+const t_convert	*create_convert_struct(void);
 
 #endif

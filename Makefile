@@ -4,8 +4,12 @@ LIBFT_PATH=./src
 SRC=ft_printf.c \
 type_management.c \
 convert_management.c \
-ft_puthexa.c \
-main.c
+check_management.c \
+str_convert_manager.c \
+num_convert_manager.c \
+create_struct.c \
+main.c \
+ft_puthexa.c
 #CFLAGS = -Wall -Wextra -Werror
 BONUS=flag_management.c \
 margin_management.c

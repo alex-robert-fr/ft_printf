@@ -6,13 +6,13 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:16:52 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/15 16:50:31 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:15:00 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	get_margin_and_precision(const char *str, t_info_cur_arg *info)
+int	get_margin(const char *str, t_info_cur_arg *info)
 {
 	int		len;
 	char	*m_str;
@@ -20,10 +20,10 @@ int	get_margin_and_precision(const char *str, t_info_cur_arg *info)
 	len = 0;
 	while (ft_isdigit(str[len]))
 		len++;
+	if (!len)
+		return (0);
 	m_str = ft_substr(str, 0, len);
 	info->margin = atoi(m_str);
-	if (info->add_space)
-		info->margin--;
 	free(m_str);
 	return (len);
 }
@@ -33,15 +33,6 @@ void	ft_putmargin(t_info_cur_arg *info)
 	int	i;
 
 	i = -1;
-	if (!info->precision)
-		while (++i < (info->margin - info->len))
-			ft_putchar_fd(info->c_margin, 1);
-	else
-	{
-		while (++i < (info->margin - info->precision))
-			ft_putchar_fd(' ', 1);
-		i--;
-		while (++i < (info->margin - info->len))
-			ft_putchar_fd('0', 1);
-	}
+	while (++i < (info->margin - info->len))
+		ft_putchar_fd(info->c_margin, 1);
 }

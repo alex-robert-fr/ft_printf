@@ -6,7 +6,7 @@
 /*   By: alrobert <alrobert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:00:54 by alrobert          #+#    #+#             */
-/*   Updated: 2022/11/15 16:58:11 by alrobert         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:53:53 by alrobert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_arg_type	check_type(const char *str)
 
 t_arg_type	get_type(const char flag)
 {
-	const t_type	t[MAX_TYPE] = {{'c', INT},
+	const t_type	t[MAX_TYPE] = {
+	{'c', INT},
 	{'s', CHAR},
 	{'p', PTR},
 	{'d', INT},
